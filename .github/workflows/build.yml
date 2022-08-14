@@ -13,11 +13,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm lint
-      - run: npm format
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn format
 
-  publish-npm:
+  deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -26,9 +26,9 @@ jobs:
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
+      - run: yarn install
       - name: Build
-        run: npm run build
+        run: quasar build
       - name: Deploy
         uses: hiono/NHKPlusManager@main
         env:
