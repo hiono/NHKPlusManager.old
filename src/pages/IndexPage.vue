@@ -7,6 +7,7 @@
       }}
       </q-btn>
       <q-btn outline rounded color="primary" label="Reset" @click="test.$reset()"></q-btn>
+      <q-btn outline rounded color="primary" @click="dellocalstrage">Del LStrage</q-btn>
     </div>
   </q-page>
 </template>
@@ -31,11 +32,17 @@
         test.increment()
       };
 
+      // ストアアクションの取得
+      const dellocalstrage = () => {
+        localStorage.removeItem("test");
+      };
+
       return {
         test,
         counter,
         doubleCount,
         incr,
+        dellocalstrage
       };
     },
   })
