@@ -1,17 +1,40 @@
 <template>
   <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+  <div>
+    <q-btn outline rounded color='primary' label='increment' @click='incr'>: {{counter}}*2={{doubleCount}}</q-btn>
+    <q-btn outline rounded color='primary' label='decrement' @click='test.decrement()'>: {{counter}}*2={{doubleCount}}</q-btn>
+  </div>
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
 
+import {useTestStore} from '../stores/test'
+import {storeToRefs} from 'pinia'
+
 export default defineComponent({
-  name: 'IndexPage'
+    name: 'IndexPage',
+    setup()
+    {
+        // ストアの呼び出し
+        const test = useTestStore()
+
+        // ストアプロパティの取得
+        // toRefsだとreactivityが壊れるので注意
+        const {counter, doubleCount} = storeToRefs(test)
+
+        // ストアアクションの取得
+        const incr = () => {
+            test.increment()
+        };
+
+        return {
+            test,
+            counter,
+            doubleCount,
+            incr,
+        }
+    },
 })
 </script>
