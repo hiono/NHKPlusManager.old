@@ -19,7 +19,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploy
-        uses: hiono/github-pages-deploy-action@master
+        uses: hiono/NHKPlusManager@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BASE_BRANCH: main
