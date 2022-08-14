@@ -1,5 +1,8 @@
 import { store } from 'quasar/wrappers'
+import { LocalStorage } from 'quasar'
+// import { SessionStorage } from 'quasar'
 import { createPinia } from 'pinia'
+import { createQuasarWebStoragePersistedState } from 'pinia-plugin-persistedstate/quasar'
 
 /*
  * If not building with SSR mode, you can
@@ -15,6 +18,10 @@ export default store((/* { ssrContext } */) => {
 
   // You can add Pinia plugins here
   // pinia.use(SomePiniaPlugin)
+
+  pinia.use(createQuasarWebStoragePersistedState(LocalStorage))
+  // or for SessionStorage
+  // pinia.use(createQuasarWebStoragePersistedState(sessionStorage))
 
   return pinia
 })

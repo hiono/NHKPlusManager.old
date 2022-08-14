@@ -1,5 +1,5 @@
 // defineStoreをインポート
-import {defineStore} from 'pinia'
+import { defineStore } from 'pinia'
 
 // defineStore`でストアを定義
 // 第一引数はアプリケーション内でユニークなキー
@@ -17,13 +17,20 @@ export const useTestStore = defineStore('test', {
 
   // actions -> 状態を変更するaction(methodsに相当)
   actions: {
-    increment()
-    {
+    increment() {
       this.counter++
     },
-    decrement()
-    {
+    decrement() {
       this.counter--
     },
+  },
+
+  persist: {
+    afterRestore: (ctx) => {
+      console.log(`just restored '${ctx.store.$id}'`)
+    },
+    beforeRestore: (ctx) => {
+      console.log(`about to restore '${ctx.store.$id}'`)
+    }
   }
 })
