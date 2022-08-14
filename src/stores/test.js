@@ -1,10 +1,9 @@
 // defineStoreをインポート
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
 // defineStore`でストアを定義
 // 第一引数はアプリケーション内でユニークなキー
-export const useTestStore = defineStore('test', {
-
+export const useTestStore = defineStore("test", {
   // state -> ストアの初期状態を定義
   state: () => ({
     counter: 0,
@@ -18,19 +17,19 @@ export const useTestStore = defineStore('test', {
   // actions -> 状態を変更するaction(methodsに相当)
   actions: {
     increment() {
-      this.counter++
+      this.counter++;
     },
     decrement() {
-      this.counter--
+      this.counter--;
     },
   },
 
   persist: {
     afterRestore: (ctx) => {
-      console.log(`just restored '${ctx.store.$id}'`)
+      console.log(`just restored '${ctx.store.$id}'`);
     },
     beforeRestore: (ctx) => {
-      console.log(`about to restore '${ctx.store.$id}'`)
-    }
-  }
-})
+      console.log(`about to restore '${ctx.store.$id}'`);
+    },
+  },
+});

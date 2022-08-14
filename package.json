@@ -4,6 +4,10 @@
   "description": "NHK+ Manager of Viewing",
   "productName": "NHK+ Manager",
   "author": "Hiro.O <bps@sculd.com>",
+  "license": {
+    "type": "MIT",
+    "url": "https://www.opensource.org/licenses/mit-license.php"
+  },
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
